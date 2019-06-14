@@ -1,0 +1,253 @@
+
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+body{
+    background-color: skyblue;
+    overflow-x: hidden;
+    
+	animation: cielo 5s 3s forwards;
+    }
+
+.lluvia{
+    width: 100%;
+    height: 900px;
+    position: absolute;
+    background: url(ui-img/lluvia.png) repeat;
+    background-size: contain;
+    opacity: 0;
+    animation: llover 3s 10s;
+    animation-fill-mode: forwards;   
+}
+
+.nube{
+    position: absolute;
+	background-image: url(ui-img/nube.svg);
+	background-repeat: no-repeat;
+	
+    }
+
+@keyframes movimientoNubes {	
+	100% {
+		left: 100% ;
+		}	
+}
+
+.n1 {
+	width: 300px ;
+	height: 203px ;
+	left: -300px ;
+	top: 100px ;
+	z-index: 1 ;
+	animation: movimientoNubes 3.5s infinite linear 1s ;
+	}
+
+.n2 {
+	width: 512px ;
+	height: 345px ;
+	left: -512px ;
+	top: 200px ;
+	z-index: 3 ;
+	animation: movimientoNubes 5s infinite linear ;
+	}
+
+.n3 {
+	width: 200px ;
+	height: 135px ;
+	left: -200px ;
+	top: 200px ;
+	z-index: 2 ;
+	animation: movimientoNubes 2s infinite linear reverse ;
+	}
+
+.n4 {
+	width: 200px ;
+	height: 135px ;
+	left: -400px ;
+	top: 500px ;
+	z-index: 4 ;
+	animation: movimientoNubes 2s infinite linear alternate ;
+	}
+
+.n5 {
+	width: 512px ;
+	height: 473px ;
+	left: -512px ;
+	top: 0 ;
+	z-index: 0 ;
+	background-image: url(ui-img/rain-weather-wet-cloud-icon.svg) ;
+	animation: movimientoNubes 2s infinite ease-in-out alternate ;
+	}
+
+
+
+
+.parada1, .parada2, .parada3{
+     background: url(ui-img/nube.svg);
+    background-size: contain;
+}
+.parada1{
+    width: 150px;
+    height: 150px;
+    left: 65%;
+    top: 10%;
+}
+.parada2{
+    width: 250px;
+    height: 250px;
+    left: 40%;
+    top: 10%;
+}
+.parada3{
+    width: 100px;
+    height: 100px;
+    left: 35%;
+    top: 18%;
+}
+
+
+.nubeOriginal{
+    right: 0;
+    animation: nubeLenta 15s linear;
+    animation-fill-mode: forwards;
+    
+    }
+
+    @keyframes nubeLenta{
+    
+    0%{
+        right: -100px;
+    }
+    
+    100%{
+        right: 10%;
+    }
+    
+    }
+
+
+.nubeMedia{
+    width: 200px;
+    height: 200px;
+    left: 0;
+    animation: mediaVeloc 10s linear;
+    animation-fill-mode: forwards;
+    }
+
+    @keyframes mediaVeloc{
+    
+        0%{
+        left: -100px;
+        }
+        20%{
+        left: 20%;  
+        }
+    
+        40%{
+        left: 40%;    
+        }
+        100%{
+        left: 70%;
+        }
+    
+    }
+
+
+.nubeGrande{
+    width: 300px;
+    height: 300px;
+    left: 0;
+    animation: altaVeloc 10s linear;
+    animation-fill-mode: forwards;
+    position: relative;
+    }
+
+  @keyframes altaVeloc{
+    
+        0%{
+        left: -300px;
+        }
+    
+        100%{
+        left: 50%;
+        }
+    
+        }
+
+.nubeGrande::after, .nubeMedia::after{
+    content: "";
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: url(ui-img/rain-weather-wet-cloud-icon.svg) no-repeat center;
+    background-size: contain;
+    position: absolute;
+    bottom: 50px;
+    left: 0px;
+}
+.nubeMedia::after{
+    left: 200px;
+}
+.nubeMedia::before, .nubeGrande::before{
+    content: "";
+    display: block;
+    width: 200px;
+    height: 356px;
+    background: url(ui-img/rayo.png) no-repeat center;
+    background-size: contain;
+    position: absolute;
+    bottom: -190px;
+    left: -7px;
+    z-index: -1;
+    opacity: 0;
+    animation: rayo .5s alternate-reverse 10s 2;
+
+}
+
+
+@keyframes rayo{
+    
+    1%{
+        opacity: 1;
+    }
+    10%{
+        opacity: 0;
+    }
+    20%{
+        opacity: 0;
+    }
+    40%{
+        opacity: 0;
+    }
+    65%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+@keyframes cielo{
+   0%{
+         background-color: skyblue;
+    }
+100%{
+        background-color: slategray;
+    }
+}
+ 
+
+@keyframes llover{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
